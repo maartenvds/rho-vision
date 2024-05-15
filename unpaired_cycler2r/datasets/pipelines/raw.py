@@ -3,6 +3,7 @@ from imageio import imread
 
 import numpy as np
 import rawpy
+import cv2
 
 from mmgen.datasets.builder import PIPELINES
 
@@ -34,6 +35,8 @@ class LoadRAWFromFile:
         filepath = str(results[f'{self.key}_path'])
         if filepath.endswith('TIF'):
             img = imread(filepath).astype(np.float32)
+        elif filepath.endswith('png'):
+            img = cv2.imread(filepath, -1).astype(np.float32)
         else:
             with rawpy.imread(filepath) as f:
                 img = f.raw_image_visible.copy().astype(np.float32)

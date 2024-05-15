@@ -7,10 +7,41 @@ We proposes a novel **$\bf{\rho}$-Vision** to directly perform **high-level sema
 In this repo, we release our **Unpaired CycleR2R** code and pretrained models. With Unpaired CycleR2R, you could **train your RAW model with diversity and realistic simulated RAW images** and then **deploy them in the real-world directly**.
 
 
-## Requirments
+## Install
+
+Tested with python version 3.8
+
+This repo is based on `mmgen`, which unfortunately cannot be installed with a single pip command.
+The installation of this repo therefore happens in three steps, where **the order** of steps is important!
+
+1. Install pytorch:
+
+```bash
+pip install torch==1.8.0 torchvision --index-url https://download.pytorch.org/whl/cu102
+```
+
+2. Install `mmcv:
+
+```bash
+pip install mmcv-full==1.3.8 -f https://download.openmmlab.com/mmcv/dist/cu102/torch1.8.0/index.html
+```
+
+3. Install the remaining requirements:
+
 ```bash
 pip install -r requirements.txt
 ```
+
+4. Dependency issue
+
+Finally, to work around a runtime dependency issue, you need to:
+
+```bash
+pip install mmcls==0.17.0
+```
+
+This will create a pip dependency error, but you can ignore it.
+
 
 ## Datasets
 (*required*) Download the [MulitRAW](https://box.nju.edu.cn/d/0f4b5206cf734bd889aa/) [LUCID subset (passwd: 46t1)](https://pan.baidu.com/s/1BmsahDDfvmeQCLiIhC4O-g).

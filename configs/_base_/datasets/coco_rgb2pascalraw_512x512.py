@@ -1,6 +1,6 @@
 BLC = 0
 SATURATION = 4095
-H, W = 480, 640
+H, W = 640, 640
 
 dataset_type = 'UnpairedCycleR2RDataset'
 domain_a = 'raw'  # set by user
@@ -11,8 +11,8 @@ train_split_a = 'datasets/PASCALRAW/trainval/train.txt'
 test_split_a = 'datasets/PASCALRAW/trainval/train.txt'
 
 # dataset b setting
-train_dataroot_b = 'datasets/COCO/images/train2017'
-test_dataroot_b = 'datasets/COCO/images/val2017'
+train_dataroot_b = 'datasets/COCO/train2017'
+test_dataroot_b = 'datasets/COCO/val2017'
 split_b = None
 
 train_pipeline = [
@@ -37,7 +37,7 @@ train_pipeline = [
     dict(
         type='Crop',
         keys=[f'img_{domain_a}', f'img_{domain_b}'],
-        crop_size=(416, 416),
+        crop_size=(512, 512),
         random_crop=True),
     dict(type='Flip', keys=[f'img_{domain_a}'], direction='horizontal'),
     dict(type='Flip', keys=[f'img_{domain_b}'], direction='horizontal'),

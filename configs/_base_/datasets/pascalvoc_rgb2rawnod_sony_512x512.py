@@ -1,19 +1,19 @@
 BLC = 0
-SATURATION = 4095
+SATURATION = 2**14 - 1
 H, W = 640, 640
 
 dataset_type = 'UnpairedCycleR2RDataset'
 domain_a = 'raw'  # set by user
 domain_b = 'rgb'  # set by user
 # dataset a setting
-dataroot_a = 'datasets/PASCALRAW/png'   # png folder contains 16-bit raw rgb images
-train_split_a = 'datasets/PASCALRAW/trainval/train.txt'
-test_split_a = 'datasets/PASCALRAW/trainval/train.txt'
+dataroot_a = 'datasets/RAW-NOD/raw/Sony_small'   #folder contains 16-bit raw rgb images
+train_split_a = 'datasets/RAW-NOD/all_images.txt'
+test_split_a = 'datasets/RAW-NOD/all_images.txt'
 
 # dataset b setting
-train_dataroot_b = 'datasets/COCO/train2017'
-test_dataroot_b = 'datasets/COCO/val2017'
-split_b = None
+dataroot_b = 'datasets/PASCALVOC/JPEGImages'
+train_split_b = 'datasets/PASCALVOC/train.txt'
+test_split_b = 'datasets/PASCALVOC/test_2007.txt'
 
 train_pipeline = [
     dict(
@@ -97,27 +97,27 @@ data = dict(
     train=dict(
         type=dataset_type,
         dataroot_a=dataroot_a,
-        dataroot_b=train_dataroot_b,
+        dataroot_b=dataroot_b,
         split_a=train_split_a,
-        split_b=split_b,
+        split_b=train_split_b,
         pipeline=train_pipeline,
         domain_a=domain_a,
         domain_b=domain_b),
     val=dict(
         type=dataset_type,
         dataroot_a=dataroot_a,
-        dataroot_b=test_dataroot_b,
+        dataroot_b=dataroot_b,
         split_a=test_split_a,
-        split_b=split_b,
+        split_b=test_split_b,
         domain_a=domain_a,
         domain_b=domain_b,
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
         dataroot_a=dataroot_a,
-        dataroot_b=test_dataroot_b,
+        dataroot_b=dataroot_b,
         split_a=test_split_a,
-        split_b=split_b,
+        split_b=test_split_b,
         domain_a=domain_a,
         domain_b=domain_b,
         pipeline=test_pipeline))

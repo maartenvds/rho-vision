@@ -48,4 +48,4 @@ evaluation = dict(
     ],
     best_metric=['fid', 'is'])
 
-checkpoint_config = dict(interval=10000, save_optimizer=True, by_epoch=False)
+checkpoint_config = dict(interval=1000, save_optimizer=True, by_epoch=False)

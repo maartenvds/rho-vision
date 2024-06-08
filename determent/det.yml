@@ -1,0 +1,8 @@
+work_dir: /apollo/mva/raw_image_object_detection/rho-vision
+resources:
+  resource_pool: gpu
+  slots: 1
+environment:
+  image: mva88/mmyolo:latest
+  environment_variables:
+    - HOME=/apollo/mva/raw_image_object_detection/rho-vision

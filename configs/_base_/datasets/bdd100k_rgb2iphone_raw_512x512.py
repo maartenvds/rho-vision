@@ -7,9 +7,9 @@ dataset_type = 'UnpairedCycleR2RDataset'
 domain_a = 'raw'  # set by user
 domain_b = 'rgb'  # set by user
 # dataset a setting
-dataroot_a = 'datasets/multiRAW/{}/raw'.format(CAMERA)
-train_split_a = 'datasets/multiRAW/{}/train.txt'.format(CAMERA)
-test_split_a = 'datasets/multiRAW/{}/train.txt'.format(CAMERA)
+dataroot_a = 'datasets/MultiRAW/{}/raw'.format(CAMERA)
+train_split_a = 'datasets/MultiRAW/{}/train.txt'.format(CAMERA)
+test_split_a = 'datasets/MultiRAW/{}/train.txt'.format(CAMERA)
 
 # dataset b setting
 train_dataroot_b = 'datasets/bdd100k/images/100k/train'
@@ -96,8 +96,8 @@ test_pipeline = [
 ]
 
 data = dict(
-    samples_per_gpu=4,
-    workers_per_gpu=8,
+    samples_per_gpu=1,
+    workers_per_gpu=0,
     drop_last=True,
     val_samples_per_gpu=1,
     val_workers_per_gpu=0,
